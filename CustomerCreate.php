@@ -18,6 +18,7 @@ use Symfony\Component\Yaml\Yaml;
 
 $appConfig = Yaml::parse(file_get_contents('../api_credentials/myapp.yml'));
 $context = Context::of()->setLanguages(['de'])->setGraceful(true);
+// create the api client config object
 $config = Config::fromArray($appConfig['parameters'])->setContext($context);
 $client = Client::ofConfig($config);
 
