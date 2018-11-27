@@ -5,16 +5,16 @@
  * Date: 22.11.2018
  * Time: 11:51
  */
-require __DIR__ . '/../vendor/autoload.php';
+namespace Commercetools\Core;
 
 use Commercetools\Core\Builder\Request\RequestBuilder;
-use Commercetools\Core\Client;
-use Commercetools\Core\Config;
 use Commercetools\Core\Model\Common\Context;
 use Commercetools\Core\Model\Customer\CustomerDraft;
 use Commercetools\Core\Model\Common\Address;
 use Commercetools\Core\Model\Common\AddressCollection;
 use Symfony\Component\Yaml\Yaml;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 $appConfig = Yaml::parse(file_get_contents('../api_credentials/myapp.yml'));
 $context = Context::of()->setLanguages(['de'])->setGraceful(true);
@@ -38,8 +38,9 @@ $customerFirstName = 'Hans';
 $customerLastName = 'Peter';
 $customerLocale = 'DE';
 $customerMiddleName = '';
-//$customerDateOfBirth = (new \DateTime())->format('Y-m-d');
-$customerDateOfBirth = new DateTime();
+$customerDateOfBirth = (new \DateTime())->format('Y-m-d');
+$customerDateOfBirth = new \DateTime();
+//$customerDateOfBirth = new DateTime();
 $customerStreetName = 'Sehr Weit Weg';
 $customerStreetNumber = '10';
 $customerPostalCode = '65462';

@@ -3,11 +3,9 @@
  * This is a bootstrap file for a phar distribution of the SDK in order to be able to use
  * `require 'commercetools-php-sdk.phar';`
  */
-require __DIR__ . '/../vendor/autoload.php';
+namespace Commercetools\Core;
 
 use Commercetools\Core\Builder\Request\RequestBuilder;
-use Commercetools\Core\Client;
-use Commercetools\Core\Config;
 use Commercetools\Core\Model\Common\Context;
 use Commercetools\Core\Model\Order\ImportOrder;
 use Commercetools\Core\Model\Order\LineItemImportDraftCollection;
@@ -24,8 +22,9 @@ use Commercetools\Core\Model\Common\TaxedPrice;
 use Commercetools\Core\Model\Common\TaxPortion;
 use Commercetools\Core\Model\Common\TaxPortionCollection;
 use Commercetools\Core\Model\Product\ProductData;
-
 use Symfony\Component\Yaml\Yaml;
+
+require __DIR__ . '/../vendor/autoload.php';
 
 $appConfig = Yaml::parse(file_get_contents('../api_credentials/myapp.yml'));
 $context = Context::of()->setLanguages(['en'])->setGraceful(true);

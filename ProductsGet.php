@@ -36,16 +36,14 @@ $request = RequestBuilder::of()->productProjections()->search()
     ->addParam('text.' . current($config->getContext()->getLanguages()), $search)
     ->setContext($config->getContext());
 
-/*$log = new Logger('name');
+$log = new Logger('name');
 $log->pushHandler(new StreamHandler('./requests.log'));
 
 $filesystemAdapter = new Local(__DIR__.'/');
 $filesystem        = new Filesystem($filesystemAdapter);
 $cache = new FilesystemCachePool($filesystem);
 
-$client = Client::ofConfigCacheAndLogger($config, $cache, $log);*/
-$client = Client::ofConfig($config);
-
+$client = Client::ofConfigCacheAndLogger($config, $cache, $log);
 
 $response = $client->execute($request);
 $products = $request->mapFromResponse($response);

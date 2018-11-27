@@ -5,16 +5,16 @@
  * Date: 22.11.2018
  * Time: 11:51
  */
-require __DIR__ . '/../vendor/autoload.php';
+namespace Commercetools\Core;
 
 use Commercetools\Core\Builder\Request\RequestBuilder;
-use Commercetools\Core\Client;
-use Commercetools\Core\Config;
 use Commercetools\Core\Model\Common\Context;
 use Commercetools\Core\Model\Customer\Customer;
 use Symfony\Component\Yaml\Yaml;
 
-$appConfig = Yaml::parse(file_get_contents('myapp.yml'));
+require __DIR__ . '/../vendor/autoload.php';
+
+$appConfig = Yaml::parse(file_get_contents('../api_credentials/myapp.yml'));
 $context = Context::of()->setLanguages(['de'])->setGraceful(true);
 // create the api client config object
 $config = Config::fromArray($appConfig['parameters'])->setContext($context);
